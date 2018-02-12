@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Messing_Around_1
 {
@@ -20,9 +21,20 @@ namespace Messing_Around_1
     /// </summary>
     public partial class MainWindow : Window
     {
+        System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();       
+        RotateTransform rotateTransform = new RotateTransform(1);
+
         public MainWindow()
         {
             InitializeComponent();
+            dispatcherTimer.Tick += dispatcherTimer_Tick;
+            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(1);
+            dispatcherTimer.Start();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            recty.RenderTransform = rotateTransform;
         }
     }
 }
