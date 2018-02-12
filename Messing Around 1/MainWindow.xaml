@@ -7,7 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Rectangle x:Name="recty" Fill="Black" HorizontalAlignment="Left" Height="15" Margin="161,144,0,0" Stroke="Black" VerticalAlignment="Top" Width="187"/>
+        <Rectangle x:Name="recty" Fill="Black" HorizontalAlignment="Center" Height="15" Margin="174,154,156,150" Stroke="Black" VerticalAlignment="Center" Width="187" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Slider x:Name="slider" HorizontalAlignment="Left" Margin="174,274,0,0" VerticalAlignment="Top" Width="187" Maximum="50" TickFrequency="10" ValueChanged="slider_ValueChanged"/>
 
     </Grid>
 </Window>

@@ -22,19 +22,30 @@ namespace Messing_Around_1
     public partial class MainWindow : Window
     {
         System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();       
-        RotateTransform rotateTransform = new RotateTransform(1);
+
+
+        int i = 0;
+        int speed = 0;
 
         public MainWindow()
         {
             InitializeComponent();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
-            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(1);
+            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(100);
             dispatcherTimer.Start();
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
+            RotateTransform rotateTransform = new RotateTransform(i);
             recty.RenderTransform = rotateTransform;
+
+            i = i + speed;
+        }
+
+        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            speed = Convert.ToInt32(slider.Value);
         }
     }
 }
